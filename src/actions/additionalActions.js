@@ -1,9 +1,15 @@
-export const addFeature = () => {
-    console.log('it works!')
-    return { type: 'ADD_FEATURE' };
+export const addFeature = item => {
+    console.log('it works!', item)
+    return {
+        type: 'ADD_FEATURE',
+        payload: item
+    };
 };
 
 export const removeFeature = item => {
-    console.log('remove is here!')
-    return { type: 'REMOVE_FEATURE'}
+    console.log('removed')
+    return {
+        type: 'REMOVE_FEATURE',
+        payload: item
+    }
   };

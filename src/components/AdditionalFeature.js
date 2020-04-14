@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { addFeature } from '../actions/additionalActions';
 
 const AdditionalFeature = props => {
-  console.log('props', props)
+  console.log('props', props.feature)
   return (
     <li>
       {/* Add an onClick that will let you add a feature to your car */}
       <button
         className="button"
-        onClick={props.addFeature}
+        onClick={() =>props.addFeature(props.feature)}
       >
         Add
         </button>
@@ -21,9 +21,10 @@ const AdditionalFeature = props => {
 
 const mapStateToProps = state => {
   return {
-    feature: state.feature
+    features: state.car.features
   }
 }
+
 
 export default connect(
   mapStateToProps,

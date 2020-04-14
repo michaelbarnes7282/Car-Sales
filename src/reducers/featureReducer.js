@@ -16,13 +16,28 @@ export const initialState = {
 };
 
 export const featureReducer = (state = initialState, action) => {
+    // console.log(state)
     switch (action.type) {
         case 'ADD_FEATURE':
-            return state;
-
+           return {
+            ...state,
+            additionalPrice: state.additionalPrice + action.payload.price,
+            car: {
+                ...state.car,
+                features: [...state.car.features, action.payload]
+            }
+           };
         case 'REMOVE_FEATURE':
-            return state;
+            return {
+                ...state,
+                additionalPrice: state.additionalPrice - action.payload.price,
+                car: {
+                    ...state.car,
+                    features: state.car.features.filter(item => item.id !== action.payload.id)
+                }
+            }
         default:
             return state;
     };
+    
 };
